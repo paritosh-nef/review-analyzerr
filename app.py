@@ -186,10 +186,11 @@ def result():
          #plt.show # D3D3D3
         plt.title("Results")
         plt.savefig('graph.png')
+        print('Img saved !')
         plt.clf()
-        im = Image.open("graph.PNG")
+        im = Image.open("graph.png")
         data = io.BytesIO()
-        im.save(data, "PNG")
+        im.save(data, "png")
         encoded_img_data = base64.b64encode(data.getvalue())
 
        # return redirect("index.html")
