@@ -92,7 +92,7 @@ def result():
 
         reviews = []
         for j in range(len(link)):
-            for k in range(20
+            for k in range(20)
                 response = Searchreviews(link[j] + '&pageNumber=' + str(k))
                 soup = BeautifulSoup(response.content)
                 for i in soup.findAll("span", {'data-hook': "review-body"}):
