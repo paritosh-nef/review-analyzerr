@@ -92,7 +92,7 @@ def result():
 
         reviews = []
         for j in range(len(link)):
-            for k in range(50):
+            for k in range(20
                 response = Searchreviews(link[j] + '&pageNumber=' + str(k))
                 soup = BeautifulSoup(response.content)
                 for i in soup.findAll("span", {'data-hook': "review-body"}):
@@ -100,7 +100,7 @@ def result():
 
         if (len(reviews)) == 0 :
             print('Error 0 reviews found')
-            return render_template("index.html", prediction_text='Error : Reviews not found.Only Amazon links work "&#128533"')
+            return render_template("index.html", prediction_text='Error : Reviews not found.Only Amazon links work ')
 
 
         rev = {'reviews': reviews}
