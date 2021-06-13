@@ -1,4 +1,0 @@
-stopwords
-punkt
-word_tokenize
-WordNetLemmatizer
