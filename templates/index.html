@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Amazon Product Review Anal​yzer !">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>Review Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nicepage.css') }}" media="screen">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/Home.css') }}" media="screen">
+
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'><link rel="stylesheet" href="{{ url_for('static', filename='css/anime.css') }}">
+
+<script >document.addEventListener("DOMContentLoaded", function(event) {
+   document.querySelectorAll('img').forEach(function(img){
+    img.onerror = function(){this.style.display='none';};
+   })
+});
+
+</script>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script  src="{{ url_for('static', filename='script/anime.js') }}"></script> 
+    <script class="u-script" type="text/javascript" src="{{ url_for('static', filename='script/jquery.js') }}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{{ url_for('static', filename='script/nicepage.js') }}" defer=""></script> 
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    
+    
+    
+    <meta property="og:title" content="Home">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+    <link rel="canonical" href="index.html">
+    <meta property="og:url" content="index.html">
+  </head>
+  <body class="u-body">
+    <section class="u-clearfix u-image u-section-1" id="sec-00de" data-image-width="2000" data-image-height="1333">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <h2 class="u-align-center u-text u-text-1">Amazon Product Review Analyzer <span style="font-weight: 700;"></span>
+        </h2>
+      </div>
+    </section>
+    <section class="skrollable u-clearfix u-image u-section-2" id="sec-bcc1" data-image-width="2000" data-image-height="1333">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-expanded-width-xs u-form u-form-1">
+         
+              <form action = "/result" method ="post">
+
+    <input type = "url" id="url" name="url" placeholder="Insert Amazon Product Link Here !" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required=>
+     <div class="u-align-center u-form-group u-form-submit">
+              <div class="twoToneCenter">
+    <button type = "submit"  class="twoToneButton u-btn u-btn-round u-btn-submit u-button-style u-radius-42 u-btn-1"> Analyze Reviews !</button>
+            </div>
+          </form>
+        </div>
+        <center>
+        <h3> {{ prediction_text }}  </h3>  </center>
+        <img class="u-expanded-width-xs u-image u-image-default u-image-1" id="picture" src="data:image/jpeg;base64,{{ img_data }}" alt="" data-image-width="640" data-image-height="480" onerror="this.style.display='none'"/>
+      </div>
+    </section>
+    
+    
+    <footer class="u-align-left u-clearfix u-footer u-grey-80 u-footer" id="sec-8c05"><div class="u-clearfix u-sheet u-sheet-1"></div></footer>
+    <section class="u-backlink u-clearfix u-grey-80">
+      
+      <p class="u-text">
+        <span>Sentimental Analysis on Reviews from Amazon Website</span>
+      </p>
+      
+      </a>. 
+    </section>
+  </body>
+</html>
