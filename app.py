@@ -19,22 +19,18 @@ from sklearn import naive_bayes
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.model_selection import train_test_split
 import nltk
-#nltk.download('stopwords')
+nltk.download('stopwords')
+nltk.download('wordnet')
+nltk.download('punkt')
 import re
-import nltk
 import string
-#nltk.download('punkt')
 from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords #imports stopwords from nltk
+from nltk.corpus import stopwords
 from nltk.corpus import wordnet
 from nltk.corpus import stopwords
-#nltk.download('wordnet')
-#nltk.download('stopwords')
 from nltk.stem import WordNetLemmatizer
 stop_words = set(stopwords.words('english'))
 lemma = WordNetLemmatizer()
-#import spacy
-#nlp = spacy.load('en_core_web_sm')
 import pandas as pd
 import os
 from flask import Flask, render_template,request
