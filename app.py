@@ -40,6 +40,7 @@ import sys
 from PIL import Image
 import base64
 import io
+import time
 
 
 app = Flask(__name__)
@@ -53,6 +54,13 @@ def home():
 @app.route("/result", methods = ["GET","POST"])
 def result():
     if request.method == "POST":
+        milliseconds = int(round(time.time() * 1000))
+        print(milliseconds)
+        bagofwords = str(milliseconds) + "bagofwords.csv"
+        scrape = str(milliseconds) + "scrape.csv"
+        graph = str(milliseconds) + "graph.png"
+        man = str(milliseconds) + "man.csv"
+
         # getting input with url = url in HTML form
         url = str(request.form.get("url"))
         print(url)
@@ -112,7 +120,7 @@ def result():
 
         print(review_data.shape)
 
-        review_data.to_csv('Bye.csv')
+        review_data.to_csv(scrape)
 
         print('File saved... !')
 
@@ -149,7 +157,7 @@ def result():
         model = pickle.load(open('trained_model.pkl', 'rb'))
         vecccc = pickle.load(open('vec_s.pkl', 'rb'))
 
-        test_data = pd.read_csv("Bye.csv")
+        test_data = pd.read_csv(scrape)
         test_data['reviews'].head(10)
         clean = []
         for sent in test_data['reviews'].values:
@@ -157,7 +165,7 @@ def result():
             da = datapre(fa)
             clean.append(da)
         test_data['cleane'] = clean
-        test_data.to_csv('man.csv')
+        test_data.to_csv(man)
         test_data['cleane'].shape
         test_data.head()
         vec_s = CountVectorizer()
@@ -172,7 +180,7 @@ def result():
         output = pd.DataFrame(data={"reviews": test_data["reviews"], "sentiment": y_pred_M})
         # Use pandas to write the comma-separated output file
         output.head()
-        output.to_csv("Bag_of_Wordsmodel.csv", index=False, quoting=0)
+        output.to_csv(bagofwords, index=False, quoting=0)
         output.head(10)
 
         print(output['sentiment'].value_counts())
@@ -185,10 +193,10 @@ def result():
         plt.pie(output['sentiment'].value_counts(), labels=mylabels, autopct='%1.1f%%')
          #plt.show # D3D3D3
         plt.title("Results")
-        plt.savefig('graph.png')
+        plt.savefig(graph)
         print('Img saved !')
         plt.clf()
-        im = Image.open("graph.png")
+        im = Image.open(graph)
         data = io.BytesIO()
         im.save(data, "png")
         encoded_img_data = base64.b64encode(data.getvalue())
