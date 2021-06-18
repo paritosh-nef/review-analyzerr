@@ -19,6 +19,9 @@ from sklearn import naive_bayes
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.model_selection import train_test_split
 import nltk
+nltk.download('stopwords')
+nltk.download('wordnet')
+nltk.download('punkt')
 import re
 import string
 from nltk.tokenize import word_tokenize
