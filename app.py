@@ -19,9 +19,6 @@ from sklearn import naive_bayes
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.model_selection import train_test_split
 import nltk
-nltk.download('stopwords')
-nltk.download('wordnet')
-nltk.download('punkt')
 import re
 import string
 from nltk.tokenize import word_tokenize
@@ -92,7 +89,7 @@ def result():
         response.status_code
 
         link = []
-        soup = BeautifulSoup(response.content)
+        soup = BeautifulSoup(response.content,'features="lxml"')
         for i in soup.findAll("a", {'data-hook': "see-all-reviews-link-foot"}):
             link.append(i['href'])
 
@@ -102,7 +99,7 @@ def result():
         for j in range(len(link)):
             for k in range(20):
                 response = Searchreviews(link[j] + '&pageNumber=' + str(k))
-                soup = BeautifulSoup(response.content)
+                soup = BeautifulSoup(response.content,'features="lxml"')
                 for i in soup.findAll("span", {'data-hook': "review-body"}):
                     reviews.append(i.text)
 
